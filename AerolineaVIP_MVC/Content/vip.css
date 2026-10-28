@@ -1,0 +1,11 @@
+/* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+   Estilos básicos para fase 1. Inspiración de navegación aérea; no copia de Avianca. */
+:root { --vip-navy:#142c4e; --vip-blue:#254b7a; --vip-gold:#eecf8d; }
+body { background:#f7f9fc; color:#1b2b3e; min-height:100vh; }
+.vip-nav { background:var(--vip-navy); }
+.vip-hero { background:linear-gradient(125deg,var(--vip-navy),var(--vip-blue)); color:#fff; }
+.vip-eyebrow { color:var(--vip-gold); letter-spacing:.14em; font-size:.76rem; font-weight:700; }
+.vip-card { background:white; border:1px solid #e2e8f0; border-radius:1rem; box-shadow:0 3px 15px rgba(12,36,68,.04); }
+.vip-chip { color:var(--vip-navy); background:#e7eef8; border-radius:8px; padding:.3rem .5rem; font-size:.76rem; }
+.vip-footer { background:#eff3f9; color:#46566a; }
+:focus-visible { outline:3px solid #d89e35; outline-offset:2px; }

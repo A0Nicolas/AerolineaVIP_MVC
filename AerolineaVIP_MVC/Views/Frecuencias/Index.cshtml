@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AerolineaVIP_MVC.Models.Frecuencia>
+
+@{
+    ViewBag.Title = "Gestión de Frecuencias y Vuelos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="max-width: 1150px; margin: 40px auto; padding: 0 20px;">
+
+    <!-- Encabezado superior con botones alineados -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <div>
+            <h2 style="font-weight: 800; color: var(--vip-ink); margin-bottom: 5px; font-size: 28px;">Control de Frecuencias e Itinerarios</h2>
+            <p style="color: var(--vip-mute); font-size: 14px; margin: 0;">Gestión de frecuencias semanales, horarios de salida, llegada y estado operativo.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <a href="@Url.Action("Index", "Admin")" style="background: var(--vip-bg2); color: var(--vip-ink); padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">← Volver al Panel</a>
+            <a href="@Url.Action("Create", "Frecuencias")" style="background: var(--vip-red); color: #fff; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">+ Crear Nueva Frecuencia</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta central con la tabla -->
+    <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 30px;">
+        <div class="table-responsive">
+            <table class="table" style="width: 100%; margin-bottom: 0; border-collapse: separate; border-spacing: 0 8px;">
+                <thead>
+                    <tr style="color: var(--vip-mute); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        <th style="padding: 12px; border: none;">Día de la Semana</th>
+                        <th style="padding: 12px; border: none;">Hora de Salida</th>
+                        <th style="padding: 12px; border: none;">Hora de Llegada</th>
+                        <th style="padding: 12px; border: none;">Estado</th>
+                        <th style="padding: 12px; border: none;">Ruta Asignada</th>
+                        <th style="padding: 12px; border: none; text-align: right;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="background: var(--vip-bg2); box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s;">
+                            <td style="padding: 16px; border: none; font-weight: 700; color: var(--vip-ink); border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+                                @Html.DisplayFor(modelItem => item.DiaSemana)
+                            </td>
+                            <td style="padding: 16px; border: none; color: var(--vip-ink); font-weight: 600;">
+                                @Html.DisplayFor(modelItem => item.HoraSalida)
+                            </td>
+                            <td style="padding: 16px; border: none; color: var(--vip-ink); font-weight: 600;">
+                                @Html.DisplayFor(modelItem => item.HoraLlegada)
+                            </td>
+                            <td style="padding: 16px; border: none;">
+                                <span style="background: var(--vip-bg2); color: #333; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                                    @Html.DisplayFor(modelItem => item.Activa)
+                                </span>
+                            </td>
+                            <td style="padding: 16px; border: none; color: var(--vip-mute);">
+                                Ruta #@Html.DisplayFor(modelItem => item.Ruta.RutaId)
+                            </td>
+                            <td style="padding: 16px; border: none; text-align: right; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                                <div style="display: inline-flex; gap: 6px;">
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.FrecuenciaId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.FrecuenciaId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.FrecuenciaId }, new { @style = "background: #ffeeee; color: #d9534f; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

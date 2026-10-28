@@ -1,0 +1,22 @@
+﻿@model AerolineaVIP_MVC.Models.ResultadoCompraViewModel
+@{ ViewBag.Title = "Comprobante académico"; }
+<div class="container py-4">
+    <h2>Confirmación de compra simulada</h2>
+    <div class="alert alert-success">La operación académica se registró correctamente. No se realizó ningún cobro real.</div>
+    <dl class="row">
+        <dt class="col-sm-4">Reserva</dt><dd class="col-sm-8">@Model.CodigoReserva</dd>
+        <dt class="col-sm-4">Estado de reserva</dt><dd class="col-sm-8">@Model.EstadoReserva</dd>
+        <dt class="col-sm-4">Compra</dt><dd class="col-sm-8">#@Model.CompraId</dd>
+        <dt class="col-sm-4">Estado de compra</dt><dd class="col-sm-8">@Model.EstadoCompra</dd>
+        <dt class="col-sm-4">Fecha</dt><dd class="col-sm-8">@Model.Fecha.ToString("dd/MM/yyyy HH:mm")</dd>
+        <dt class="col-sm-4">Importe simulado</dt><dd class="col-sm-8">@Model.Importe.ToString("N2") @Model.Moneda</dd>
+        <dt class="col-sm-4">Método ficticio</dt><dd class="col-sm-8">@Model.Metodo</dd>
+        <dt class="col-sm-4">Marca de demostración</dt><dd class="col-sm-8">@Model.Marca</dd>
+        <dt class="col-sm-4">Referencia ficticia</dt><dd class="col-sm-8">**** @Model.UltimosCuatro</dd>
+        <dt class="col-sm-4">Operación</dt><dd class="col-sm-8">@Model.CodigoOperacion</dd>
+        <dt class="col-sm-4">Comprobante</dt><dd class="col-sm-8">@Model.NumeroComprobante</dd>
+        <dt class="col-sm-4">Estado del comprobante</dt><dd class="col-sm-8">@Model.EstadoComprobante</dd>
+    </dl>
+    <p class="text-muted">Comprobante académico sin validez tributaria.</p>
+    @Html.ActionLink("Mis reservas", "MisReservas", "Reservas", null, new { @class = "btn btn-outline-primary" })
+</div>

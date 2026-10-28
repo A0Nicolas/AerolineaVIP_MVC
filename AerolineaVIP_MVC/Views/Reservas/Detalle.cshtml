@@ -1,0 +1,23 @@
+﻿@model AerolineaVIP_MVC.Models.ReservaResumenViewModel
+@{ ViewBag.Title = "Detalle de reserva"; }
+<div class="container py-4">
+    <h2>Reserva @Model.Codigo</h2>
+    <dl class="row">
+        <dt class="col-sm-3">Estado de la reserva</dt><dd class="col-sm-9">@Model.Estado</dd>
+        <dt class="col-sm-3">Vuelo</dt><dd class="col-sm-9">VIP@(Model.VueloId.ToString("D5"))</dd>
+        <dt class="col-sm-3">Fecha de vuelo</dt><dd class="col-sm-9">@Model.FechaVuelo.ToString("dd/MM/yyyy")</dd>
+        <dt class="col-sm-3">Pasajero</dt><dd class="col-sm-9">@Model.Pasajero</dd>
+        <dt class="col-sm-3">Número de asiento</dt><dd class="col-sm-9">@Model.Asiento</dd>
+        <dt class="col-sm-3">Estado del asiento</dt><dd class="col-sm-9">@Model.EstadoAsiento</dd>
+        <dt class="col-sm-3">Importe referencial</dt><dd class="col-sm-9">@Model.Importe.ToString("N2")</dd>
+    </dl>
+    @if (Model.Estado == "PENDIENTE")
+    {
+        @Html.ActionLink("Continuar a compra simulada", "Pagar", "Compras", new { reservaId = Model.ReservaId }, new { @class = "btn btn-primary me-2" })
+    }
+    else if (Model.Estado == "CONFIRMADA")
+    {
+        @Html.ActionLink("Ver comprobante académico", "Resultado", "Compras", new { reservaId = Model.ReservaId }, new { @class = "btn btn-success me-2" })
+    }
+    @Html.ActionLink("Mis reservas", "MisReservas", "Reservas", null, new { @class = "btn btn-outline-primary" })
+</div>

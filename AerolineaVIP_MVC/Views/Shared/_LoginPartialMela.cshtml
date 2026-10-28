@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNet.Identity
+@* CÓDIGO PROPIO - Sesión Identity en el diseño de Mela. *@
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutFormMela", style = "margin:0" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="vip-auth">
+            <a class="vip-user" href="@Url.Action("Index", "Manage")" title="Gestionar mi cuenta">@User.Identity.GetUserName()</a>
+            <button type="submit" class="vip-logout">Salir</button>
+        </div>
+    }
+}
+else
+{
+    <div class="vip-auth">
+        <a href="@Url.Action("Login", "Account")">Ingresar</a>
+        <a href="@Url.Action("Register", "Account")">Crear cuenta</a>
+    </div>
+}

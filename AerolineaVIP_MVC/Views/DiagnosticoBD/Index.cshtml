@@ -1,0 +1,48 @@
+﻿@model AerolineaVIP_MVC.Models.DiagnosticoBDViewModel
+@{
+    ViewBag.Title = "Comprobación SQL - Nico";
+}
+@* VISTA PROPIA - NO GENERADA POR SCAFFOLDING.
+   Vista temporal para comprobar el acceso al modelo EDMX.
+   El diseño final y el Home/Index están asignados a Mela. *@
+<div class="container py-4">
+    <h1 class="h3 mb-3">Comprobación de Entity Framework</h1>
+    <p class="text-muted">Lectura de AerolineaVIP con el contexto generado desde Model1.edmx.</p>
+
+    @if (!String.IsNullOrEmpty(Model.Error))
+    {
+        <div class="alert alert-danger" role="alert">@Model.Error</div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="status">Conexión con SQL Server realizada correctamente.</div>
+        <p><strong>Aeronaves:</strong> @Model.TotalAeronaves &nbsp; | &nbsp; <strong>Vuelos:</strong> @Model.TotalVuelos</p>
+
+        <h2 class="h5 mt-4">Aeronaves</h2>
+        <table class="table table-bordered table-striped">
+            <thead><tr><th>ID</th><th>Matrícula</th><th>Estado</th></tr></thead>
+            <tbody>
+            @foreach (var a in Model.Aeronaves)
+            {
+                <tr><td>@a.AeronaveId</td><td>@a.Matricula</td><td>@a.Estado</td></tr>
+            }
+            </tbody>
+        </table>
+
+        <h2 class="h5 mt-4">Primeros 10 vuelos (ordenados por fecha)</h2>
+        <table class="table table-bordered table-striped">
+            <thead><tr><th>ID</th><th>Fecha</th><th>Aeronave ID</th><th>Estado</th></tr></thead>
+            <tbody>
+            @foreach (var v in Model.Vuelos)
+            {
+                <tr>
+                    <td>@v.VueloId</td>
+                    <td>@v.FechaOperacion.ToString("dd/MM/yyyy")</td>
+                    <td>@(v.AeronaveId.HasValue ? v.AeronaveId.Value.ToString() : "Sin asignar")</td>
+                    <td>@v.Estado</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>

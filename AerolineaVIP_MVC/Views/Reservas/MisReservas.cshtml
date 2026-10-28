@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AerolineaVIP_MVC.Models.ReservaResumenViewModel>
+@{ ViewBag.Title = "Mis reservas"; }
+<div class="container py-4">
+    <h2>Mis reservas</h2>
+    <table class="table table-striped">
+        <thead><tr><th>Código</th><th>Pasajero</th><th>Vuelo</th><th>Fecha</th><th>Asiento</th><th>Estado</th><th></th></tr></thead>
+        <tbody>
+        @foreach (var r in Model)
+        {
+            <tr><td>@r.Codigo</td><td>@r.Pasajero</td><td>VIP@(r.VueloId.ToString("D5"))</td><td>@r.FechaVuelo.ToString("dd/MM/yyyy")</td><td>@r.Asiento</td><td>@r.Estado</td><td>@Html.ActionLink("Detalle", "Detalle", new { id = r.ReservaId })</td></tr>
+        }
+        </tbody>
+    </table>
+    @if (!Model.Any()) { <p>Todavía no tienes reservas registradas.</p> }
+    <p>@Html.ActionLink("Buscar vuelos", "Index", "Vuelos")</p>
+</div>

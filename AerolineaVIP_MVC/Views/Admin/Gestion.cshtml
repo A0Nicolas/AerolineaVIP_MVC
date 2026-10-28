@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AerolineaVIP_MVC.Models.UsuarioGestionViewModel>
+@{
+    ViewBag.Title = "Gestión de Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var super = User.IsInRole("SuperUsuario");
+}
+<div class="container py-4" style="max-width:1200px">
+  <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+    <div><h2>Gestión de usuarios y roles</h2><p class="text-muted">Identidad y permisos administrativos de la aerolínea.</p></div>
+    <a class="btn btn-outline-secondary" href="@Url.Action("Index", "Admin")">Volver al panel</a>
+  </div>
+  @if (TempData["Exito"] != null) { <div class="alert alert-success" role="alert">@TempData["Exito"]</div> }
+  @if (TempData["Error"] != null) { <div class="alert alert-danger" role="alert">@TempData["Error"]</div> }
+  @if (super) { <p><a class="btn btn-primary" href="@Url.Action("Register", "Account")">Crear usuario y elegir rol</a></p> }
+  <div class="table-responsive"><table class="table table-striped align-middle">
+   <thead><tr><th>Usuario</th><th>Correo</th><th>Rol principal</th><th>Estado</th><th>Acciones permitidas</th></tr></thead>
+   <tbody>
+   @foreach (var usuario in Model) {
+      bool protegido = string.Equals(usuario.UserName, "SuperAdmin", System.StringComparison.OrdinalIgnoreCase);
+      <tr>
+       <td><strong>@usuario.UserName</strong></td><td>@usuario.Email</td><td>@usuario.Rol</td>
+       <td>@(usuario.Bloqueado ? "Bloqueado" : "Activo")</td>
+       <td>
+         @if (super && !protegido) {
+           using (Html.BeginForm("AsignarRol", "Admin", FormMethod.Post, new { @class = "d-inline-flex gap-2 mb-1" })) {
+             @Html.AntiForgeryToken()
+             <input type="hidden" name="id" value="@usuario.Id" />
+             <select name="rol" class="form-select form-select-sm" aria-label="Asignar rol a @usuario.UserName">
+               @foreach (var rol in new[] { "Cliente", "Counter", "Administrador", "Gerente", "SuperUsuario" }) {
+                 if (usuario.Rol == rol) {
+                   <option value="@rol" selected="selected">@rol</option>
+                 } else {
+                   <option value="@rol">@rol</option>
+                 }
+               }
+             </select>
+             <button class="btn btn-sm btn-outline-primary" type="submit">Guardar rol</button>
+           }
+         }
+         @if (!protegido && (super || (usuario.Rol != "SuperUsuario" && usuario.Rol != "Administrador"))) {
+           using (Html.BeginForm("CambiarEstado", "Admin", FormMethod.Post, new { @class = "d-inline-block mb-1" })) {
+             @Html.AntiForgeryToken()
+             <input type="hidden" name="id" value="@usuario.Id" />
+             <button type="submit" class="btn btn-sm btn-outline-secondary">@(usuario.Bloqueado ? "Activar" : "Bloquear")</button>
+           }
+         }
+         @if (protegido) { <span class="text-muted">Cuenta protegida</span> }
+       </td>
+      </tr>
+   }
+   </tbody>
+  </table></div>
+</div>

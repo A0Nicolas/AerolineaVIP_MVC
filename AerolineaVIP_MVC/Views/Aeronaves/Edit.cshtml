@@ -1,0 +1,61 @@
+﻿@model AerolineaVIP_MVC.Models.Aeronave
+
+@{
+    ViewBag.Title = "Editar Aeronave";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="max-width: 600px; margin: 40px auto; padding: 0 20px;">
+
+    <!-- Encabezado y botón de retorno -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <div>
+            <h2 style="font-weight: 800; color: var(--vip-ink); font-size: 26px; margin-bottom: 5px;">Editar Aeronave</h2>
+            <p style="color: var(--vip-mute); font-size: 14px; margin: 0;">Modifique los datos y estados operativos de la aeronave seleccionada.</p>
+        </div>
+        <div>
+            <a href="@Url.Action("Index")" style="background: var(--vip-bg2); color: var(--vip-ink); padding: 8px 18px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 13px;">← Volver al listado</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta contenedora del formulario -->
+    <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 35px; border: 1px solid #eaeaea;">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @style = "color: #d9534f; font-size: 13px; margin-bottom: 20px; background: #ffeeee; padding: 10px; border-radius: 8px;" })
+            @Html.HiddenFor(model => model.AeronaveId)
+
+            <!-- Campo Matrícula -->
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: 600; color: #333; font-size: 13px; margin-bottom: 6px;">Matrícula</label>
+                @Html.EditorFor(model => model.Matricula, new { htmlAttributes = new { @class = "form-control", @style = "width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; outline: none; background: #fafafa;" } })
+                @Html.ValidationMessageFor(model => model.Matricula, "", new { @style = "color: #d9534f; font-size: 12px;" })
+            </div>
+
+            <!-- Campo Modelo de Aeronave -->
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-weight: 600; color: #333; font-size: 13px; margin-bottom: 6px;">Modelo de Aeronave</label>
+                @Html.DropDownList("ModeloAeronaveId", null, htmlAttributes: new { @class = "form-control", @style = "width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; outline: none; background: #fafafa;" })
+                @Html.ValidationMessageFor(model => model.ModeloAeronaveId, "", new { @style = "color: #d9534f; font-size: 12px;" })
+            </div>
+
+            <!-- Campo Estado de Aeronave -->
+            <div style="margin-bottom: 30px;">
+                <label style="display: block; font-weight: 600; color: #333; font-size: 13px; margin-bottom: 6px;">Estado de Aeronave</label>
+                @Html.DropDownList("EstadoAeronaveCodigo", null, htmlAttributes: new { @class = "form-control", @style = "width: 100%; padding: 12px 16px; border: 1px solid #ddd; border-radius: 10px; font-size: 14px; outline: none; background: #fafafa;" })
+                @Html.ValidationMessageFor(model => model.EstadoAeronaveCodigo, "", new { @style = "color: #d9534f; font-size: 12px;" })
+            </div>
+
+            <!-- Botón de Guardar Cambios -->
+            <button type="submit" style="width: 100%; background: var(--vip-red); color: #fff; padding: 12px; border: none; border-radius: 50px; font-weight: 600; font-size: 15px; cursor: pointer; transition: background 0.2s;">
+                Guardar Cambios
+            </button>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

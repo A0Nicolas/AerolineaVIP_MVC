@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>@ViewBag.Title - Aerandes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Enlace a tu archivo CSS -->
+    <link href="@Url.Content("~/Content/aerolinea.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/aerolinea-fixes.css")" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <header>
+        <div class="wrap">
+            <a class="logo" href="@Url.Action("Index", "Home")">✈ aerandes</a>
+            <nav>
+                <a href="@Url.Action("Index", "Home")#reservar">Reservar</a>
+                <a href="@Url.Action("Index", "Vuelos")">Buscar vuelos</a>
+                <a href="@Url.Action("MisReservas", "Reservas")">Mis reservas</a>
+                <a href="@Url.Action("Index", "Home")#experiencia">Experiencia Aerandes</a>
+                <a href="@Url.Action("Index", "Home")#millas">Millas</a>
+
+                <!-- Enlace dinámico al Panel Admin visible solo para administradores -->
+                @if (Request.IsAuthenticated && (User.IsInRole("Administrador") || User.IsInRole("SuperUsuario")))
+                {
+                    <a href="@Url.Action("Index", "Admin")" style="color: #d9534f; font-weight: bold;">⚙️ Panel Admin</a>
+                }
+            </nav>
+            <div class="hr">
+                <button class="pill" id="locb">🇪🇨 USD ▾</button>
+
+                <!-- Control de sesión integrado de ASP.NET -->
+                @Html.Partial("_LoginPartialMela")
+            </div>
+        </div>
+    </header>
+
+    <!-- AQUÍ SE INYECTAN LAS PÁGINAS DINÁMICAS (Index, Login, Admin, etc.) -->
+    @RenderBody()
+
+    <footer>
+        <div class="wrap">
+            <div class="cols">
+                <div><h4>Enlaces rápidos</h4><a href="#">Nuestros destinos</a><a href="#">Gestiona tu reserva</a><a href="#">Check-in online</a><a href="#">Equipaje</a><a href="#">Ascenso a Business Class</a><a href="#">Estado de vuelos</a></div>
+                <div><h4>Sobre nosotros</h4><a href="#">Somos Aerandes</a><a href="#">Contáctanos</a><a href="#">Noticias corporativas</a><a href="#">Responsabilidad corporativa</a><a href="#">Plan de accesibilidad</a><a href="#">Trabaja con nosotros</a></div>
+                <div><h4>Nuestros portales</h4><a href="#">Aerandes empresas</a><a href="#">Soporte agencias</a><a href="#">Aerandes carga</a><a href="#">Relación con inversionistas</a><a href="#">Millas empresas</a></div>
+                <div><h4>Información legal</h4><a href="#">Política de privacidad</a><a href="#">Contrato de transporte</a><a href="#">Artículos restringidos</a><a href="#">Plan de contingencia</a><a href="#">Factura electrónica</a><a href="#">Política de cookies</a></div>
+            </div>
+            <div class="copy">© 2026 Aerandes. Sitio de demostración con marca ficticia.</div>
+        </div>
+    </footer>
+
+    <div class="ov" id="lov" hidden>
+        <div class="mb" role="dialog" aria-label="Ubicación e idioma">
+            <h3>Selecciona tu ubicación e idioma <button id="lx" aria-label="Cerrar">✕</button></h3>
+            <div class="f"><label for="cs">Seleccionar país</label><select id="cs"></select></div>
+            <div class="f"><label for="ls">Idioma</label><select id="ls"><option>Español</option><option>English</option><option>Português</option></select></div>
+            <button class="btn" id="lok" style="width:100%">Confirmar</button>
+        </div>
+    </div>
+
+    <!-- Enlace a tu archivo JS -->
+    <script src="@Url.Content("~/Scripts/aerolinea.js")"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

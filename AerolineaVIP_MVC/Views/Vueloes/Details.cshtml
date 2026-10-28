@@ -1,0 +1,59 @@
+﻿@model AerolineaVIP_MVC.Models.Vuelo
+
+@{
+    ViewBag.Title = "Detalles de Vuelo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="max-width: 600px; margin: 40px auto; padding: 0 20px;">
+
+    <!-- Encabezado y botón de retorno -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <div>
+            <h2 style="font-weight: 800; color: var(--vip-ink); font-size: 26px; margin-bottom: 5px;">Detalles del Vuelo</h2>
+            <p style="color: var(--vip-mute); font-size: 14px; margin: 0;">Información completa de la operación y asignaciones.</p>
+        </div>
+        <div>
+            <a href="@Url.Action("Index")" style="background: var(--vip-bg2); color: var(--vip-ink); padding: 8px 18px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 13px;">← Volver al listado</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta contenedora de la información -->
+    <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 35px; border: 1px solid #eaeaea;">
+
+        <div style="margin-bottom: 30px;">
+            <table style="width: 100%; font-size: 14px;">
+                <tr style="border-bottom: 1px solid #f1f1f1;">
+                    <td style="padding: 14px 0; font-weight: 600; color: #555;">@Html.DisplayNameFor(model => model.FechaOperacion)</td>
+                    <td style="padding: 14px 0; color: var(--vip-ink); font-weight: 700; text-align: right;">@Html.DisplayFor(model => model.FechaOperacion)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f1f1;">
+                    <td style="padding: 14px 0; font-weight: 600; color: #555;">@Html.DisplayNameFor(model => model.Aeronave.Matricula)</td>
+                    <td style="padding: 14px 0; color: var(--vip-ink); font-weight: 600; text-align: right;">@Html.DisplayFor(model => model.Aeronave.Matricula)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #f1f1f1;">
+                    <td style="padding: 14px 0; font-weight: 600; color: #555;">@Html.DisplayNameFor(model => model.EstadoVuelo.Descripcion)</td>
+                    <td style="padding: 14px 0; text-align: right;">
+                        <span style="background: #e6f4ea; color: #137333; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                            @Html.DisplayFor(model => model.EstadoVuelo.Descripcion)
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 14px 0; font-weight: 600; color: #555;">@Html.DisplayNameFor(model => model.Frecuencia.FrecuenciaId)</td>
+                    <td style="padding: 14px 0; color: var(--vip-ink); text-align: right;">@Html.DisplayFor(model => model.Frecuencia.FrecuenciaId)</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div style="display: flex; gap: 15px;">
+            <a href="@Url.Action("Edit", new { id = Model.VueloId })" style="flex: 1; text-align: center; background: var(--vip-red); color: #fff; padding: 12px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                Editar Registro
+            </a>
+            <a href="@Url.Action("Index")" style="flex: 1; text-align: center; background: var(--vip-bg2); color: var(--vip-ink); padding: 12px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">
+                Volver
+            </a>
+        </div>
+    </div>
+</div>

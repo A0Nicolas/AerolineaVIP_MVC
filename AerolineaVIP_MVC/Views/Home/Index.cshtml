@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Reserva tu vuelo VIP";
+    Layout = "~/Views/Shared/_LayoutMela.cshtml";
+}
+<main class="vip-home">
+    <div class="wrap">
+    
+        <section class="book" id="reservar">
+            <div class="row"><div class="tabs" role="tablist"><button data-t="rt">Ida y vuelta</button><button class="on" data-t="ow">Solo ida</button></div><span class="spacer"></span><a class="pill" href="#millas">Reservar con millas VIP ↗</a></div>
+            <div class="fields">
+                <div class="od"><div class="f"><label for="o">Origen</label><input id="o" value="Quito (UIO)" autocomplete="off"><div class="dd" id="ddo" hidden></div></div><button class="swap" id="sw" aria-label="Invertir">⇄</button><div class="f"><label for="d" style="padding-left:14px">Destino</label><input id="d" placeholder="¿A dónde vas?" style="padding-left:14px" autocomplete="off"><div class="dd" id="ddd" hidden></div></div></div>
+                <div class="dates"><div class="f"><label for="s">Salida</label><input id="s" type="date"></div><div class="f" id="rf"><label for="r">Regreso</label><input id="r" type="date"></div></div>
+                <div class="f"><label>Pasajeros</label><button type="button" id="pb" class="pbtn" aria-expanded="false">1 ▾</button><div class="pop" id="pop" hidden><b>¿Quiénes vuelan?</b><div id="pl"></div><div class="info" id="inf"><span>ⓘ <a href="#" id="pol">Conoce</a> la política VIP para menores.</span><button type="button" id="infx" aria-label="Cerrar">✕</button></div><button type="button" class="btn" id="pok" style="width:100%">Confirmar</button></div></div>
+                <button type="button" class="btn" id="go">Buscar vuelo</button>
+            </div>
+            <div class="msg" id="m" role="status"></div>
+        </section>
+
+       
+        <section class="hero" id="ofertas-h">
+            <div class="box"><h1>¡Exclusividad y confort en cada vuelo!</h1><p>Experimente la verdadera aviación ejecutiva. Conectamos los principales destinos del país con máxima privacidad y horarios a su medida.</p><a class="btn2" href="@Url.Action("Index", "Vuelos")">Reserve ya</a></div>
+            <div class="art">VIP</div>
+        </section>
+    </div>
+
+  
+    <section class="sec" id="ofertas">
+        <div class="wrap">
+            <h2>Rutas ejecutivas desde <span class="sub">Quito ▾</span></h2>
+            @* CÓDIGO PROPIO - Integración visual Mela + Nico.
+               Tarjetas locales sin imágenes remotas y enlaces al buscador real de vuelos. *@
+            <div class="grid g3 vip-destinations">
+                <a class="dest dest--galapagos" href="@Url.Action("Index", "Vuelos", new { destinoCodigo = "GPS" })" aria-label="Consultar vuelos hacia Galápagos">
+                    <span class="dest__tag">Destino VIP</span>
+                    <span class="dest__info"><strong class="dest__city">Galápagos</strong><span class="dest__meta">Naturaleza y exclusividad</span><span class="dest__cta">Consultar vuelos <span aria-hidden="true">→</span></span></span>
+                </a>
+                <a class="dest dest--guayaquil" href="@Url.Action("Index", "Vuelos", new { destinoCodigo = "GYE" })" aria-label="Consultar vuelos hacia Guayaquil">
+                    <span class="dest__tag">Destino VIP</span>
+                    <span class="dest__info"><strong class="dest__city">Guayaquil</strong><span class="dest__meta">Conexión ejecutiva</span><span class="dest__cta">Consultar vuelos <span aria-hidden="true">→</span></span></span>
+                </a>
+                <a class="dest dest--manta" href="@Url.Action("Index", "Vuelos", new { destinoCodigo = "MEC" })" aria-label="Consultar vuelos hacia Manta">
+                    <span class="dest__tag">Destino VIP</span>
+                    <span class="dest__info"><strong class="dest__city">Manta</strong><span class="dest__meta">Costa del Pacífico</span><span class="dest__cta">Consultar vuelos <span aria-hidden="true">→</span></span></span>
+                </a>
+            </div>
+            <p style="text-align:right;margin-top:16px;font-size:13px"><a class="sub" href="@Url.Action("Index", "Vuelos")">Descubrir más rutas ›</a></p>
+        </div>
+    </section>
+
+    <section class="sec alt" id="reserva">
+        <div class="wrap">
+            <h2>Prepárese para su viaje</h2>
+            <div class="grid g3">
+                <a class="card"><span class="ic">🎫</span><span><strong>Abordaje directo</strong>Llegue 15 minutos antes de su vuelo, sin filas ni esperas.</span></a>
+                <a class="card"><span class="ic">📱</span><span><strong>Asistencia Ejecutiva</strong>Comuníquese directamente con su concierge de vuelo.</span></a>
+                <a class="card" href="#millas"><span class="ic">🏅</span><span><strong>Programa Elite VIP</strong>Beneficios exclusivos para nuestros socios más frecuentes.</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec alt" id="experiencia" style="padding-top:0">
+        <div class="wrap">
+            <h2>La Experiencia Ejecutiva</h2>
+            <div class="biz">
+                <h3>Flota Embraer Phenom 300E</h3>
+                <p style="font-size:13px;opacity:.85">La aeronave ligera más rápida y con mayor alcance de su categoría. Equipada para brindar una experiencia inigualable.</p>
+                <a href="@Url.Action("Index", "Vuelos")">Consultar nuestros vuelos</a>
+            </div>
+
+            <div class="grid g4" id="millas">
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--lounge" aria-hidden="true">♛</div><div class="vip-feature__text"><strong>Salas VIP Privadas</strong><p>Acceso exclusivo a nuestras salas de espera con total discreción.</p></div></article>
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--time" aria-hidden="true">◷</div><div class="vip-feature__text"><strong>Horarios Flexibles</strong><p>Usted decide la hora exacta de salida de su itinerario.</p></div></article>
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--catering" aria-hidden="true">✦</div><div class="vip-feature__text"><strong>Catering Premium</strong><p>Menú personalizado a bordo seleccionado para sus gustos.</p></div></article>
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--charter" aria-hidden="true">✈</div><div class="vip-feature__text"><strong>Vuelos Chárter</strong><p>Reserve la aeronave completa para su equipo o familia.</p></div></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec">
+        <div class="wrap">
+            <h2>Servicios Exclusivos</h2>
+            <div class="grid g4">
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--hotel" aria-hidden="true">⌂</div><div class="vip-feature__text"><strong>Hoteles 5 Estrellas</strong><p>Coordinación de hospedaje de lujo en su ciudad de destino.</p></div></article>
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--transfer" aria-hidden="true">↗</div><div class="vip-feature__text"><strong>Traslados Privados</strong><p>Choferes a disposición desde y hacia el aeropuerto.</p></div></article>
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--helicopter" aria-hidden="true">✈</div><div class="vip-feature__text"><strong>Conexión en Helicóptero</strong><p>Traslados rápidos a centros financieros y turísticos.</p></div></article>
+                <article class="vip-feature"><div class="vip-feature__art vip-feature__art--privacy" aria-hidden="true">◆</div><div class="vip-feature__text"><strong>Seguridad y Privacidad</strong><p>Personal capacitado para garantizar su tranquilidad.</p></div></article>
+            </div>
+            <div class="help" style="margin-top:44px">
+                <div><strong>¿Necesita asistencia especial?</strong><a href="#">Comuníquese con su asesor VIP <span>→</span></a><a href="#">Atención corporativa <span>→</span></a></div>
+                <div class="app"><div class="phone" aria-hidden="true"></div><div><strong>Toda su agenda en su móvil</strong><ul><li>Gestione sus vuelos ejecutivos en tiempo real.</li><li>Comuníquese con la tripulación.</li><li>Solicite servicios de catering y traslados terrestres.</li></ul><div class="stores"><span>App Store</span><span>Google Play</span></div></div></div>
+            </div>
+        </div>
+    </section>
+</main>

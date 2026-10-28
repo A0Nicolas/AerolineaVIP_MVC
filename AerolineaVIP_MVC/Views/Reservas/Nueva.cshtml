@@ -1,0 +1,28 @@
+﻿@model AerolineaVIP_MVC.Models.NuevaReservaViewModel
+@{ ViewBag.Title = "Nueva reserva"; }
+<div class="container py-4">
+    <h2>Reservar un asiento</h2>
+    <p><strong>@Model.ResumenVuelo</strong> · Tarifa referencial: @Model.Tarifa.ToString("N2")</p>
+    @if (!Model.Asientos.Any()) { <div class="alert alert-warning">Este vuelo no tiene asientos disponibles para reservar.</div> }
+    else
+    {
+        using (Html.BeginForm("Nueva", "Reservas", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.VueloId)
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <div class="row g-3">
+                <div class="col-md-6"><label class="form-label">Asiento disponible</label>@Html.DropDownListFor(m => m.NumeroAsiento, Model.Asientos, "Seleccione", new { @class = "form-select" })@Html.ValidationMessageFor(m => m.NumeroAsiento, "", new { @class = "text-danger" })</div>
+                <div class="col-md-6"><label class="form-label">Tipo de documento</label>@Html.DropDownListFor(m => m.TipoDocumentoCodigo, Model.TiposDocumento, "Seleccione", new { @class = "form-select" })@Html.ValidationMessageFor(m => m.TipoDocumentoCodigo, "", new { @class = "text-danger" })</div>
+                <div class="col-md-6"><label class="form-label">Número de documento</label>@Html.TextBoxFor(m => m.NumeroDocumento, new { @class = "form-control", maxlength = 20 })@Html.ValidationMessageFor(m => m.NumeroDocumento, "", new { @class = "text-danger" })</div>
+                <div class="col-md-6"><label class="form-label">Nombres</label>@Html.TextBoxFor(m => m.Nombres, new { @class = "form-control" })@Html.ValidationMessageFor(m => m.Nombres, "", new { @class = "text-danger" })</div>
+                <div class="col-md-6"><label class="form-label">Apellidos</label>@Html.TextBoxFor(m => m.Apellidos, new { @class = "form-control" })@Html.ValidationMessageFor(m => m.Apellidos, "", new { @class = "text-danger" })</div>
+                <div class="col-md-6"><label class="form-label">Correo (opcional)</label>@Html.TextBoxFor(m => m.Correo, new { @class = "form-control", type = "email" })@Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-danger" })</div>
+                <div class="col-md-6"><label class="form-label">Teléfono (opcional)</label>@Html.TextBoxFor(m => m.Telefono, new { @class = "form-control" })@Html.ValidationMessageFor(m => m.Telefono, "", new { @class = "text-danger" })</div>
+            </div>
+            <p class="text-muted mt-3">Esta operación crea una reserva PENDIENTE, no realiza pagos.</p>
+            <button type="submit" class="btn btn-primary mt-2">Confirmar reserva pendiente</button>
+        }
+    }
+    <p class="mt-3">@Html.ActionLink("Volver al vuelo", "Detalle", "Vuelos", new { id = Model.VueloId }, null)</p>
+</div>

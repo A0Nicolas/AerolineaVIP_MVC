@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Consultas y Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="max-width: 1150px; margin: 40px auto; padding: 0 20px;">
+
+    <!-- Encabezado superior con botones alineados -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <div>
+            <h2 style="font-weight: 800; color: var(--vip-ink); margin-bottom: 5px; font-size: 28px;">Consultas y Reportes Operativos</h2>
+            <p style="color: var(--vip-mute); font-size: 14px; margin: 0;">Listados y reportes operativos simples basados en los datos del sistema de Aerolínea VIP.</p>
+        </div>
+        <div>
+            <a href="@Url.Action("Index", "Admin")" style="background: var(--vip-bg2); color: var(--vip-ink); padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">← Volver al Panel</a>
+        </div>
+    </div>
+
+    <!-- Contenedor de Reportes -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+
+        <!-- Reporte 1 -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span style="background: #e6f4ea; color: #137333; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">Reporte Operativo</span>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-top: 15px; margin-bottom: 8px;">Flota de Aeronaves Activas</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Consulta consolidada del estado actual, matrículas y fabricantes de la flota Embraer Phenom.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Aeronaves", "Admin")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Ver listado completo</a>
+            </div>
+        </div>
+
+        <!-- Reporte 2 -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span style="background: #e6f4ea; color: #137333; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">Reporte Operativo</span>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-top: 15px; margin-bottom: 8px;">Itinerarios y Frecuencias</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Resumen de horarios de salida, llegada y días asignados para las rutas activas de la aerolínea.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Vueloes", "Admin")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Ver itinerarios</a>
+            </div>
+        </div>
+
+        <!-- Reporte 3 -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 30px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <span style="background: #e6f4ea; color: #137333; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">Reporte Administrativo</span>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-top: 15px; margin-bottom: 8px;">Usuarios Registrados en el Sistema</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Control general de perfiles de clientes, administradores y accesos autorizados por Identity.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Gestion", "Admin")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Ver control de accesos</a>
+            </div>
+        </div>
+
+    </div>
+</div>

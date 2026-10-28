@@ -1,0 +1,51 @@
+﻿@model AerolineaVIP_MVC.Models.VueloDetalleViewModel
+@{
+    ViewBag.Title = "Detalle del vuelo";
+}
+<div class="container py-4">
+    <h2>Detalle y mapa de asientos</h2>
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+        <div class="alert alert-danger">@Model.Error</div>
+    }
+    else if (Model.Vuelo != null)
+    {
+        <h4>VIP@(Model.Vuelo.VueloId.ToString("D5")) — @Model.Vuelo.Origen → @Model.Vuelo.Destino</h4>
+        <p>Fecha: @Model.Vuelo.FechaOperacion.ToString("dd/MM/yyyy") | Salida: @Model.Vuelo.HoraSalida.ToString(@"hh\:mm") | Llegada: @Model.Vuelo.HoraLlegada.ToString(@"hh\:mm")</p>
+        <p>Estado: @Model.Vuelo.Estado | Aeronave: @Model.Vuelo.Matricula | Disponibles: <strong>@Model.Vuelo.Disponibles / @Model.Vuelo.Capacidad</strong></p>
+        <p><span class="badge bg-success">Verde: disponible</span> <span class="badge" style="background-color:#7546a5">Morado: reservado</span> <span class="badge bg-danger">Rojo: ocupado</span></p>
+        <div class="row g-2 mb-3">
+            @foreach (var s in Model.Asientos)
+            {
+                // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+                // Se asigna una clase al estado; el CSS debe prevalecer sobre el tema general.
+                var claseEstado = s.EstadoVisual == "DISPONIBLE" ? "vip-seat-disponible" :
+                                  s.EstadoVisual == "RESERVADO" ? "vip-seat-reservado" :
+                                  s.EstadoVisual == "OCUPADO" ? "vip-seat-ocupado" : "vip-seat-sin-estado";
+                <div class="col-6 col-md-3">
+                    <div class="card vip-seat @claseEstado text-center p-3 h-100">
+                        <strong>@s.Codigo</strong>
+                        <span>@s.Ubicacion</span>
+                        <small>@s.EstadoVisual</small>
+                    </div>
+                </div>
+            }
+        </div>
+        if (Model.Asientos.Count == 0)
+        {
+            <div class="alert alert-warning">Esta salida no tiene aeronave o asientos configurados.</div>
+        }
+        if (Model.Vuelo.Disponibles > 0 && Model.Asientos.Count > 0)
+        {
+            <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
+                @Html.ActionLink("Reservar un asiento", "Nueva", "Reservas", new { vueloId = Model.Vuelo.VueloId }, new { @class = "btn btn-primary" })
+                <span class="text-muted">Se verificará la disponibilidad antes de guardar la reserva.</span>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning">Este vuelo no admite nuevas reservas porque no tiene asientos disponibles o configurados.</div>
+        }
+    }
+    @Html.ActionLink("Volver a buscar", "Index", "Vuelos", null, new { @class = "btn btn-outline-secondary" })
+</div>

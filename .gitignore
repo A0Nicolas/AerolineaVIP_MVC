@@ -1,0 +1,15 @@
+﻿# Visual Studio and build
+.vs/
+**/bin/
+**/obj/
+packages/
+**/*.user
+**/*.suo
+**/*.cache
+**/*.tmp
+# OS
+Thumbs.db
+.DS_Store
+# Secrets and local config copies
+**/Web.*.local.config
+**/*.bak

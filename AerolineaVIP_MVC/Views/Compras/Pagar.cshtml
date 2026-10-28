@@ -1,0 +1,36 @@
+﻿@model AerolineaVIP_MVC.Models.PagoSimuladoViewModel
+@{ ViewBag.Title = "Pago académico simulado"; }
+<div class="container py-4">
+    <h2>Confirmar compra simulada</h2>
+    <p><strong>Reserva:</strong> @Model.CodigoReserva | <strong>Total:</strong> @Model.Importe.ToString("N2") USD</p>
+    <div class="alert alert-warning">
+        <strong>Demostración académica:</strong> no se procesa ningún cobro real.
+        No ingrese datos de tarjetas, contraseñas ni información bancaria.
+    </div>
+    @using (Html.BeginForm("Pagar", "Compras", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.ReservaId)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="mb-3">
+            @Html.LabelFor(m => m.MetodoPagoCodigo, new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.MetodoPagoCodigo, Model.Metodos, "Seleccione", new { @class = "form-select" })
+            @Html.ValidationMessageFor(m => m.MetodoPagoCodigo, "", new { @class = "text-danger" })
+        </div>
+        <div class="mb-3">
+            @Html.LabelFor(m => m.MarcaTarjetaCodigo, new { @class = "form-label" })
+            @Html.DropDownListFor(m => m.MarcaTarjetaCodigo, Model.Marcas, "Seleccione", new { @class = "form-select" })
+            @Html.ValidationMessageFor(m => m.MarcaTarjetaCodigo, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-check mb-3">
+            @Html.CheckBoxFor(m => m.AceptaSimulacion, new { @class = "form-check-input" })
+            @Html.LabelFor(m => m.AceptaSimulacion, "Confirmo que esta operación es únicamente una simulación, sin dinero real.", new { @class = "form-check-label" })
+            @Html.ValidationMessageFor(m => m.AceptaSimulacion, "", new { @class = "text-danger d-block" })
+        </div>
+        <button type="submit" class="btn btn-primary">Aprobar pago ficticio</button>
+        @Html.ActionLink("Volver a la reserva", "Detalle", "Reservas", new { id = Model.ReservaId }, new { @class = "btn btn-outline-secondary ms-2" })
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

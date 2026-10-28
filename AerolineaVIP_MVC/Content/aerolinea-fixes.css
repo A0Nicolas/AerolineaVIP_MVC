@@ -1,0 +1,73 @@
+﻿/* CÓDIGO PROPIO - Corrección visual de Index de Mela, sin alterar la lógica. */
+:root { color-scheme: light dark; }
+body { overflow-x: hidden; }
+body .wrap { max-width: 1160px; }
+header .wrap { min-height: 72px; height: auto; padding-block: 10px; }
+header nav { gap: clamp(12px, 1.6vw, 28px); align-items:center; }
+header nav a { white-space: nowrap; }
+header .hr { align-items: center; white-space:nowrap; }
+header .logo { font-size: clamp(21px, 2vw, 27px); flex:none; }
+.vip-home .book { margin-top: 28px; padding: 24px; }
+.vip-home .fields { grid-template-columns: minmax(250px,1.3fr) minmax(280px,1.3fr) minmax(125px,.6fr) minmax(145px,.68fr); gap: 12px; }
+.vip-home .fields > .btn { border-radius: 10px; }
+.vip-home .f input:focus, .vip-home .f select:focus { outline:none; }
+.vip-home .f:focus-within, .vip-home .od:focus-within, .vip-home .dates:focus-within { border-color: var(--teal); box-shadow: 0 0 0 2px color-mix(in srgb, var(--teal) 25%, transparent); }
+.vip-home input[type=date] { min-width: 0; font-size: 13px; color-scheme: light; }
+@media (prefers-color-scheme: dark) { .vip-home input[type=date] {color-scheme: dark} }
+.vip-home .msg { min-height: 0; }
+.vip-home .msg:empty {display:none}
+.vip-home .hero { min-height: 250px; background: radial-gradient(circle at 77% 37%,#ef8048 0,transparent 22%), linear-gradient(119deg,#16111f 0%,#342046 47%,#af432d 100%); }
+.vip-home .hero .box { padding: 28px; }
+.vip-home .hero h1 { font-size: clamp(26px,3.3vw,39px); }
+.vip-home .hero .art { font-size: clamp(70px,9vw,120px); opacity:.9; letter-spacing:-5px; }
+.vip-home .sec h2 { margin-bottom: 10px; }
+.vip-destinations { gap: 20px; }
+.vip-home .dest { min-height: 260px; padding: 18px; align-items:stretch; justify-content:space-between; flex-direction:column; color:#fff; border:1px solid rgba(255,255,255,.08); background-color:#1d4c60; background-position: center center; background-size:cover; transition: transform .18s ease, box-shadow .18s ease; isolation:isolate; }
+.vip-home .dest:hover { transform:translateY(-4px); box-shadow:0 16px 28px rgba(0,0,0,.24); }
+.vip-home .dest::after {content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,31,.1) 22%,rgba(12,14,27,.83) 100%);z-index:0;}
+.vip-home .dest--galapagos { background-image:url('Assets/destino-galapagos.svg'); }
+.vip-home .dest--guayaquil { background-image:url('Assets/destino-guayaquil.svg'); }
+.vip-home .dest--manta { background-image:url('Assets/destino-manta.svg'); }
+.vip-home .dest__tag { position:static;align-self:flex-start; border-radius:30px; padding:5px 12px; background:rgba(14,27,33,.55); border:1px solid rgba(255,255,255,.23); backdrop-filter:blur(6px); color:#fff; font-size:11px;font-weight:700; }
+.vip-home .dest__info { display:flex;flex-direction:column;gap:5px; width:100%; }
+.vip-home .dest__city {font-size:clamp(25px,3vw,34px);font-weight:800;color:#fff;line-height:1.08;}
+.vip-home .dest__meta {font-size:13px;color:#e9f3f3;}
+.vip-home .dest__cta {display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.32);font-size:13px;font-weight:700;color:#fff;}
+.vip-home .vip-feature { border:1px solid var(--line); background:var(--card);color:var(--ink); border-radius:16px; overflow:hidden; display:flex;flex-direction:column; min-height:226px; }
+.vip-home .vip-feature__art {height:125px; display:flex; align-items:center; justify-content:center; font-size:52px; color:white;text-shadow:0 3px 20px rgba(0,0,0,.18);}
+.vip-home .vip-feature__art--lounge { background:radial-gradient(circle at 28% 17%,#c4787c,transparent 44%),linear-gradient(125deg,#292039,#b76266); }
+.vip-home .vip-feature__art--time { background:radial-gradient(circle at 75% 18%,#e3ae73,transparent 47%),linear-gradient(135deg,#1d5c69,#398b86); }
+.vip-home .vip-feature__art--catering { background:radial-gradient(circle at 28% 22%,#eca872,transparent 46%),linear-gradient(125deg,#734351,#b76f5e); }
+.vip-home .vip-feature__art--charter { background:radial-gradient(circle at 70% 25%,#b4c9cc,transparent 40%),linear-gradient(125deg,#193a54,#377b93); }
+.vip-home .vip-feature__art--hotel { background:linear-gradient(125deg,#643d65,#d3837b); }
+.vip-home .vip-feature__art--transfer { background:linear-gradient(125deg,#285a63,#69aaa3); }
+.vip-home .vip-feature__art--helicopter { background:linear-gradient(125deg,#725164,#df9e6c); }
+.vip-home .vip-feature__art--privacy { background:linear-gradient(125deg,#345368,#8b98a7); }
+.vip-home .vip-feature__text { padding:16px 15px 22px; }
+.vip-home .vip-feature__text strong {font-size:14px;display:block;margin-bottom:6px;color:var(--ink);}
+.vip-home .vip-feature__text p {font-size:12px;color:var(--mute);line-height:1.6;margin:0;}
+.vip-home .card { min-height:100px; }
+.vip-user {color:var(--ink);font-weight:700;font-size:13px;max-width:145px;overflow:hidden;text-overflow:ellipsis;}
+.vip-logout {background:var(--red);color:white;border:0;border-radius:22px;padding:8px 14px;font-weight:700;font-size:12px;cursor:pointer;}
+.vip-logout:hover {filter:brightness(.9)}
+.vip-auth { display:flex;align-items:center;gap:8px; }
+.vip-auth a { font-weight:700;font-size:12px; }
+.vip-auth a:last-child {background:var(--red);color:white;padding:8px 14px;border-radius:22px;}
+@media (max-width:1090px) {
+ header .wrap {flex-wrap:wrap;justify-content:center;}
+ header nav {order:3;width:100%;justify-content:center;padding:6px 0;flex-wrap:wrap;}
+ .vip-home .fields {grid-template-columns:1fr 1fr;}
+ .vip-home .fields >.btn {min-height:54px}
+}
+@media (max-width:700px) {
+ header .wrap {justify-content:space-between;}
+ header nav {display:flex;gap:12px;overflow-x:auto;justify-content:flex-start;padding-bottom:7px;flex-wrap:nowrap;}
+ .vip-home .fields {grid-template-columns:1fr;}
+ .vip-home .dest {min-height:225px;}
+ .vip-home .g3, .vip-home .g4, .vip-home .help {grid-template-columns:1fr;}
+ .vip-home .hero {grid-template-columns:1fr;}
+ .vip-home .hero .art {display:none;}
+ .vip-home .book {padding:16px;}
+}
+
+.vip-home .dest__tag, .vip-home .dest__info {position:relative;z-index:1;}

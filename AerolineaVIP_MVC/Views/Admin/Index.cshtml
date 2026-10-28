@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Panel de Administración";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="max-width: 1150px; margin: 40px auto; padding: 0 20px;">
+
+    <!-- Encabezado Principal -->
+    <div style="margin-bottom: 30px;">
+        <h2 style="font-weight: 800; color: var(--vip-ink); margin-bottom: 8px; font-size: 30px;">Panel de Administración</h2>
+        <p style="color: var(--vip-mute); font-size: 15px; margin: 0;">Seleccione el módulo que desea administrar o consultar dentro de la plataforma VIP de Aerolínea VIP.</p>
+    </div>
+
+    <!-- Cuadrícula de Tarjetas de Módulos (Grid moderna) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+
+        <!-- Módulo 1: Aeronaves -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s;">
+            <div>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-bottom: 8px;">Gestión de Aeronaves</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Administre la flota de aviones Embraer Phenom 300E, estados y configuraciones.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Aeronaves", "Admin")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Acceder al módulo</a>
+            </div>
+        </div>
+
+        <!-- Módulo 2: Aeropuertos -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s;">
+            <div>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-bottom: 8px;">Aeropuertos y Destinos</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Gestión de terminales aéreas (Quito, Guayaquil, Manta, Galápagos) y ubicaciones.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Index", "Aeropuertoes")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Acceder al módulo</a>
+            </div>
+        </div>
+
+        <!-- Módulo 3: Vuelos e Itinerarios (Corregido a "Vueloes" según tu carpeta) -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s;">
+            <div>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-bottom: 8px;">Vuelos e Itinerarios</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Control de frecuencias, rutas, horarios de salida y asignación de tramos operativos.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Vuelos", "Admin")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Acceder al módulo</a>
+            </div>
+        </div>
+
+        <!-- Módulo 4: Usuarios y Pasajeros -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s;">
+            <div>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-bottom: 8px;">Usuarios y Pasajeros</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Supervisión de perfiles de clientes, registros y control de pasajeros autorizados.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Gestion", "Admin")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Acceder al módulo</a>
+            </div>
+        </div>
+
+        <!-- Módulo 5: Consultas y Reportes -->
+        <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 25px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s;">
+            <div>
+                <h4 style="font-weight: 700; color: var(--vip-ink); font-size: 18px; margin-bottom: 8px;">Consultas y Reportes</h4>
+                <p style="color: var(--vip-mute); font-size: 13px; line-height: 1.5; margin-bottom: 20px;">Listados y reportes operativos simples basados en los datos del sistema.</p>
+            </div>
+            <div>
+                <a href="@Url.Action("Reportes", "Admin")" style="background: var(--vip-red); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-size: 13px; font-weight: 600; display: inline-block;">Acceder al módulo</a>
+            </div>
+        </div>
+
+    </div>
+</div>

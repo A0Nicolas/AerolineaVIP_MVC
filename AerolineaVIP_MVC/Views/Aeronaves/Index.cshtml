@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AerolineaVIP_MVC.Models.Aeronave>
+
+@{
+    ViewBag.Title = "Gestión de Aeronaves";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="max-width: 1150px; margin: 40px auto; padding: 0 20px;">
+
+    <!-- Encabezado superior con botones alineados -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <div>
+            <h2 style="font-weight: 800; color: var(--vip-ink); margin-bottom: 5px; font-size: 28px;">Gestión de Aeronaves</h2>
+            <p style="color: var(--vip-mute); font-size: 14px; margin: 0;">Listado general de la flota ejecutiva asignada al sistema.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <a href="@Url.Action("Index", "Admin")" style="background: var(--vip-bg2); color: var(--vip-ink); padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">← Volver al Panel</a>
+            <a href="@Url.Action("Create", "Aeronaves")" style="background: var(--vip-red); color: #fff; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">+ Crear Nueva Aeronave</a>
+        </div>
+    </div>
+
+    <!-- Tarjeta central con la tabla -->
+    <div style="background: var(--vip-card); border-radius: 16px; box-shadow: 0 4px 25px rgba(0,0,0,0.06); padding: 30px;">
+        <div class="table-responsive">
+            <table class="table" style="width: 100%; margin-bottom: 0; border-collapse: separate; border-spacing: 0 8px;">
+                <thead>
+                    <tr style="color: var(--vip-mute); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        <th style="padding: 12px; border: none;">Matrícula</th>
+                        <th style="padding: 12px; border: none;">Descripción</th>
+                        <th style="padding: 12px; border: none;">Fabricante</th>
+                        <th style="padding: 12px; border: none; text-align: right;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="background: var(--vip-bg2); box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: all 0.2s;">
+                            <td style="padding: 16px; border: none; font-weight: 700; color: var(--vip-ink); border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
+                                @Html.DisplayFor(modelItem => item.Matricula)
+                            </td>
+                            <td style="padding: 16px; border: none; color: var(--vip-ink);">
+                                @Html.DisplayFor(modelItem => item.EstadoAeronave.Descripcion)
+                            </td>
+                            <td style="padding: 16px; border: none; color: var(--vip-mute);">
+                                @Html.DisplayFor(modelItem => item.ModeloAeronave.Fabricante)
+                            </td>
+                            <td style="padding: 16px; border: none; text-align: right; border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                                <div style="display: inline-flex; gap: 6px;">
+                                    @Html.ActionLink("Editar", "Edit", new { id = item.AeronaveId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    @Html.ActionLink("Detalles", "Details", new { id = item.AeronaveId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.AeronaveId }, new { @style = "background: #ffeeee; color: #d9534f; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

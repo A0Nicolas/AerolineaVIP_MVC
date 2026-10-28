@@ -1,0 +1,22 @@
+{
+  "merged_controllers": [
+    "AdminController",
+    "AeronavesController",
+    "AeropuertoesController",
+    "FrecuenciasController",
+    "RutasController",
+    "VueloesController"
+  ],
+  "base_project": "AerolineaVIP_MVC",
+  "ef_context": "AerolineaVIPEntities",
+  "kept_model": "Model1.edmx",
+  "removed_mela_model": "AerolineaVIPModel.edmx",
+  "fixed_payment_property": "AceptaSimulacion",
+  "new_views": 32,
+  "warnings": [
+    "not_compiled",
+    "DB_not_tested",
+    "cards_admin_seed_env_variables",
+    "one_passenger_per_reservation"
+  ]
+}

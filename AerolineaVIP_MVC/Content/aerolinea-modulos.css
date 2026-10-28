@@ -1,0 +1,304 @@
+﻿/* CÓDIGO PROPIO - Paleta Aerandes (Mela) para las páginas Bootstrap MVC de Nico. */
+body.vip-app {
+    --vip-bg: #efece8;
+    --vip-bg2: #f7f5f1;
+    --vip-card: #fff;
+    --vip-ink: #1a1a1a;
+    --vip-mute: #5d5d5d;
+    --vip-line: #dcd8d2;
+    --vip-red: #e2231a;
+    --vip-teal: #1f7a80;
+    --vip-shadow: 0 12px 30px rgba(38,31,27,.08);
+    background: var(--vip-bg);
+    color: var(--vip-ink);
+    font-family: 'Red Hat Display',system-ui,sans-serif;
+    min-height: 100vh;
+}
+
+    body.vip-app .vip-nav {
+        background: var(--vip-card) !important;
+        border-bottom: 1px solid var(--vip-line);
+        min-height: 72px;
+    }
+
+        body.vip-app .vip-nav .navbar-brand {
+            font-size: 26px;
+            color: var(--vip-red) !important;
+            font-weight: 800;
+            letter-spacing: -.9px;
+        }
+
+        body.vip-app .vip-nav .nav-link {
+            color: var(--vip-ink);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+            body.vip-app .vip-nav .nav-link:hover {
+                color: var(--vip-red);
+            }
+
+        body.vip-app .vip-nav .navbar-toggler {
+            border-color: var(--vip-line);
+            color: var(--vip-ink);
+        }
+
+        body.vip-app .vip-nav .navbar-toggler-icon {
+            filter: none;
+        }
+
+    body.vip-app .vip-footer {
+        background: var(--vip-card);
+        color: var(--vip-mute);
+        border-top: 1px solid var(--vip-line);
+    }
+
+    body.vip-app main.container {
+        min-height: 66vh;
+        max-width: 1180px;
+    }
+
+    body.vip-app h1, body.vip-app h2, body.vip-app h3, body.vip-app h4 {
+        color: var(--vip-ink);
+        font-weight: 750;
+    }
+
+    body.vip-app h2 {
+        text-align: left;
+    }
+
+    body.vip-app .text-muted, body.vip-app .form-text {
+        color: var(--vip-mute) !important;
+    }
+
+    body.vip-app .card, body.vip-app .bg-white {
+        background: var(--vip-card) !important;
+        border-color: var(--vip-line) !important;
+        color: var(--vip-ink);
+    }
+
+    body.vip-app .container.my-5 .card {
+        border-radius: 16px;
+    }
+
+    body.vip-app .table-responsive {
+        border-radius: 12px;
+        overflow-x: auto;
+        border: 1px solid var(--vip-line);
+    }
+
+    body.vip-app .table {
+        --bs-table-bg: var(--vip-card);
+        --bs-table-color: var(--vip-ink);
+        --bs-table-striped-bg: var(--vip-bg2);
+        --bs-table-striped-color: var(--vip-ink);
+        --bs-table-border-color: var(--vip-line);
+        color: var(--vip-ink);
+        margin-bottom: 0;
+    }
+
+        body.vip-app .table thead th {
+            background: var(--vip-bg2);
+            color: var(--vip-ink);
+            font-size: 12px;
+            letter-spacing: .02em;
+            border-color: var(--vip-line);
+            padding: .8rem;
+        }
+
+        body.vip-app .table tbody td {
+            padding: .8rem;
+            vertical-align: middle;
+            border-color: var(--vip-line);
+        }
+
+    body.vip-app .form-control, body.vip-app .form-select, body.vip-app textarea, body.vip-app input[type="text"], body.vip-app input[type="email"], body.vip-app input[type="password"] {
+        background: var(--vip-card);
+        color: var(--vip-ink);
+        border-color: var(--vip-line);
+        border-radius: 9px;
+    }
+
+        body.vip-app .form-control:focus, body.vip-app .form-select:focus {
+            border-color: var(--vip-teal);
+            box-shadow: 0 0 0 .2rem rgba(31,122,128,.18);
+        }
+
+        body.vip-app .form-control::placeholder {
+            color: var(--vip-mute);
+            opacity: .75;
+        }
+
+    body.vip-app .btn {
+        border-radius: 9px;
+        font-weight: 700;
+    }
+
+    body.vip-app .btn-primary {
+        background: var(--vip-red);
+        border-color: var(--vip-red);
+        color: #fff;
+    }
+
+        body.vip-app .btn-primary:hover {
+            background: #bb1e19;
+            border-color: #bb1e19;
+        }
+
+    body.vip-app .btn-outline-primary {
+        color: var(--vip-teal);
+        border-color: var(--vip-teal);
+    }
+
+        body.vip-app .btn-outline-primary:hover {
+            background: var(--vip-teal);
+            color: white;
+        }
+
+    body.vip-app .btn-secondary {
+        background: #59636a;
+        border-color: #59636a;
+    }
+
+    body.vip-app a:not(.btn):not(.nav-link):not(.navbar-brand) {
+        color: var(--vip-teal);
+    }
+
+    body.vip-app a:not(.btn):hover {
+        text-decoration: underline;
+    }
+
+    body.vip-app .alert-info {
+        background: #d7eef0;
+        border-color: #a6d7da;
+        color: #124f54;
+    }
+
+    body.vip-app .alert-success {
+        background: #e3f2e7;
+        border-color: #bfdbc5;
+        color: #245d37;
+    }
+
+    body.vip-app .alert-warning {
+        background: #fff0c7;
+        border-color: #f0da9a;
+        color: #694800;
+    }
+
+    body.vip-app .badge.bg-success {
+        background: #1f7855 !important;
+    }
+
+    body.vip-app .badge.bg-danger {
+        background: #be383e !important;
+    }
+
+    body.vip-app .badge.bg-secondary {
+        background: #744b91 !important;
+    }
+
+    body.vip-app .vip-footer a {
+        color: var(--vip-teal);
+    }
+
+    body.vip-app .navbar-nav {
+        gap: 6px;
+    }
+    /* Los CRUD de Mela contienen títulos con colores inline muy oscuros. */
+    body.vip-app .vip-admin-heading {
+        color: var(--vip-ink) !important;
+    }
+
+    body.vip-app .vip-admin-subtitle {
+        color: var(--vip-mute) !important;
+    }
+
+@media (prefers-color-scheme:dark) {
+    body.vip-app {
+        --vip-bg: #1d1c1b;
+        --vip-bg2: #252322;
+        --vip-card: #2d2b2a;
+        --vip-ink: #f2f0ed;
+        --vip-mute: #b0aca6;
+        --vip-line: #44403d;
+        --vip-teal: #5fc1c7;
+        --vip-shadow: 0 12px 30px rgba(0,0,0,.16);
+    }
+
+        body.vip-app .vip-nav .navbar-toggler-icon {
+            filter: invert(1);
+        }
+
+        body.vip-app .vip-footer {
+            background: #0f0f0f;
+        }
+
+        body.vip-app .container.my-5 [style*="background: #ffffff"], body.vip-app .container.my-5 [style*="background: #fdfdfd"] {
+            background: var(--vip-card) !important;
+        }
+
+        body.vip-app .container.my-5 [style*="color: #121212"], body.vip-app .container.my-5 [style*="color: #444"], body.vip-app .container.my-5 [style*="color: #666"] {
+            color: var(--vip-ink) !important;
+        }
+
+        body.vip-app .container.my-5 [style*="background: #f1f1f1"], body.vip-app .container.my-5 [style*="background: #f4f4f4"] {
+            background: var(--vip-bg2) !important;
+        }
+
+        body.vip-app input[type=date] {
+            color-scheme: dark;
+        }
+}
+
+@media (max-width:768px) {
+    body.vip-app main.container {
+        padding-inline: 14px;
+    }
+
+    body.vip-app .table-responsive {
+        overflow: auto;
+    }
+
+    body.vip-app .navbar-collapse {
+        padding-top: 10px;
+    }
+}
+
+/* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+   Estados reales de los asientos. La regla anterior .card !important del tema
+   sobrescribía los estilos en línea, dejando todas las tarjetas grises. */
+body.vip-app .card.vip-seat {
+    color: #ffffff !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-radius: 10px;
+}
+
+    body.vip-app .card.vip-seat.vip-seat-disponible {
+        background: #15764e !important;
+        border-color: #2aa66f !important;
+        color: #fff !important;
+    }
+
+    body.vip-app .card.vip-seat.vip-seat-reservado {
+        background: #67418f !important;
+        border-color: #8c65b7 !important;
+        color: #fff !important;
+    }
+
+    body.vip-app .card.vip-seat.vip-seat-ocupado {
+        background: #ad3036 !important;
+        border-color: #d75c62 !important;
+        color: #fff !important;
+    }
+
+    body.vip-app .card.vip-seat.vip-seat-sin-estado {
+        background: #55565c !important;
+        border-color: #777983 !important;
+        color: #fff !important;
+    }
+
+body.vip-app .vip-seat strong, body.vip-app .vip-seat span, body.vip-app .vip-seat small {
+    color: #fff !important;
+}

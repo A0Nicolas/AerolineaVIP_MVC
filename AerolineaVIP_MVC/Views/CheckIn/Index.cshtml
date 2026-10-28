@@ -1,0 +1,22 @@
+﻿@model IEnumerable<AerolineaVIP_MVC.Models.CheckInFilaViewModel>
+@{ ViewBag.Title = "Check-in"; }
+<h2>Check-in de mis viajes</h2>
+<p class="text-muted">Disponible desde 24 horas hasta 1 hora antes de la salida del vuelo, para reservas confirmadas.</p>
+@if (TempData["Error"] != null) { <div class="alert alert-warning" role="alert">@TempData["Error"]</div> }
+@if (TempData["Exito"] != null) { <div class="alert alert-success" role="alert">@TempData["Exito"]</div> }
+<div class="table-responsive"><table class="table table-striped">
+<thead><tr><th>Reserva</th><th>Pasajero</th><th>Asiento</th><th>Salida</th><th>Estado</th><th>Acción</th></tr></thead>
+<tbody>
+@foreach (var a in Model) {
+<tr><td>@a.CodigoReserva</td><td>@a.Pasajero</td><td>@a.NumeroAsiento</td><td>@a.Salida.ToString("dd/MM/yyyy HH:mm")</td>
+<td>@a.Estado</td><td>
+@if (a.PuedeCompletar) {
+  using (Html.BeginForm("Completar", "CheckIn", FormMethod.Post)) {
+   @Html.AntiForgeryToken()<input type="hidden" name="asignacionId" value="@a.AsignacionId" />
+   <button type="submit" class="btn btn-sm btn-primary">Completar check-in</button>
+  }
+} else { <span class="text-muted">@a.Motivo</span> }
+</td></tr>
+}
+</tbody></table></div>
+@if (!Model.Any()) { <p>No hay reservas confirmadas para mostrar.</p> }

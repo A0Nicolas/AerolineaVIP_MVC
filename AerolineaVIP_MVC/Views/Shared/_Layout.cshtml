@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title | Aerandes VIP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;800&amp;display=swap" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    <link href="@Url.Content("~/Content/aerolinea-modulos.css")" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="vip-app">
+    @* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+       Layout de módulos MVC adaptado a la paleta de Mela. Se preserva Bootstrap y toda la lógica. *@
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light vip-nav">
+            <div class="container">
+                @Html.ActionLink("✈ aerandes", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fw-bold" })
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#vipMenu" aria-controls="vipMenu" aria-expanded="false" aria-label="Mostrar menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="vipMenu">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Buscar vuelos", "Index", "Vuelos", null, new { @class = "nav-link" })</li>
+                        @if (Request.IsAuthenticated) {
+                            <li class="nav-item">@Html.ActionLink("Mis reservas", "MisReservas", "Reservas", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Check-in", "Index", "CheckIn", null, new { @class = "nav-link" })</li>
+                            <li class="nav-item">@Html.ActionLink("Comprobantes", "Index", "Comprobantes", null, new { @class = "nav-link" })</li>
+                            if (User.IsInRole("SuperUsuario") || User.IsInRole("Administrador")) {
+                                <li class="nav-item">@Html.ActionLink("Administración", "Index", "Admin", null, new { @class = "nav-link" })</li>
+                            }
+                        }
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container py-4">
+        @RenderBody()
+    </main>
+    <footer class="vip-footer py-4 mt-4">
+        <div class="container small d-flex flex-wrap justify-content-between gap-2">
+            <span>© @DateTime.Now.Year Aerolínea VIP · Primera entrega académica</span>
+            <span>MVC 5 · .NET Framework 4.8.1</span>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

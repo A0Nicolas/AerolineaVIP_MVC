@@ -18,7 +18,20 @@
             <nav>
                 <a href="@Url.Action("Index", "Home")#reservar">Reservar</a>
                 <a href="@Url.Action("Index", "Vuelos")">Buscar vuelos</a>
-                <a href="@Url.Action("MisReservas", "Reservas")">Mis reservas</a>
+                @* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK. *@
+                @if (Request.IsAuthenticated && (User.IsInRole("Cliente") || User.IsInRole("SuperUsuario")))
+                {
+                    <a href="@Url.Action("MisReservas", "Reservas")">Mis reservas</a>
+                    <a href="@Url.Action("Index", "CheckIn")">Check-in</a>
+                }
+                @if (Request.IsAuthenticated && (User.IsInRole("Counter") || User.IsInRole("Administrador") || User.IsInRole("SuperUsuario")))
+                {
+                    <a href="@Url.Action("Index", "Counter")">Counter</a>
+                }
+                @if (Request.IsAuthenticated && (User.IsInRole("Gerente") || User.IsInRole("SuperUsuario")))
+                {
+                    <a href="@Url.Action("Index", "Gerencia")">Gerencia</a>
+                }
                 <a href="@Url.Action("Index", "Home")#experiencia">Experiencia Aerandes</a>
                 <a href="@Url.Action("Index", "Home")#millas">Millas</a>
 

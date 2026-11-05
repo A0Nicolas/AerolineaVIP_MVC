@@ -172,6 +172,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\GerenciaController.cs" />
+    <Compile Include="Controllers\CounterController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ComprasController.cs" />
     <Compile Include="Controllers\DiagnosticoBDController.cs" />
@@ -181,6 +183,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConsultasPersonalViewModels.cs" />
+    <Compile Include="Models\RolesAerolinea.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\UsuariosGestionViewModels.cs" />
     <Compile Include="Models\CheckInComprobantesViewModels.cs" />
@@ -309,7 +313,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ComprobantesController.cs" />
     <Compile Include="Controllers\CheckInController.cs" />
-
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -331,6 +334,18 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\agenda.jpg" />
+    <Content Include="Imagenes\catering.jpeg" />
+    <Content Include="Imagenes\galapagos.jpg" />
+    <Content Include="Imagenes\guayaquil.jpg" />
+    <Content Include="Imagenes\helicoptero.jpg" />
+    <Content Include="Imagenes\horario.jpg" />
+    <Content Include="Imagenes\hotel.jpg" />
+    <Content Include="Imagenes\manta.jpg" />
+    <Content Include="Imagenes\privado.jpg" />
+    <Content Include="Imagenes\seguridad.jpg" />
+    <Content Include="Imagenes\traslados.jpg" />
+    <Content Include="Imagenes\VIP.jpeg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -371,6 +386,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="Views\Admin\Roles.cshtml" />
+    <Content Include="Views\Gerencia\Index.cshtml" />
+    <Content Include="Views\Counter\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Content\vip.css" />
@@ -428,7 +446,6 @@
     <Content Include="Content\Assets\destino-guayaquil.svg" />
     <Content Include="Content\Assets\destino-manta.svg" />
     <Content Include="Scripts\aerolinea.js" />
-
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -511,7 +528,6 @@
     <Copy SourceFiles="@(RoslynDeRespaldo)" DestinationFolder="$(MSBuildProjectDirectory)\bin\roslyn" SkipUnchangedFiles="true" Condition="'@(RoslynDeRespaldo)' != ''" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
-
   <!-- CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
        Asegurar la DLL de CodeDom en bin para ASP.NET MVC 5 / IIS Express.
        No modifica Web.config ni la configuración de SQL Server. -->

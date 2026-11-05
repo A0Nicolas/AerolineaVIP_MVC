@@ -1,0 +1,43 @@
+﻿@model AerolineaVIP_MVC.Models.CounterConsultaViewModel
+@{
+    ViewBag.Title = "Atención en Counter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK. Vista solo de consulta. *@
+<div class="container py-4">
+    <h2>Atención en counter</h2>
+    <p class="text-muted">Consulta de reservas mediante código. Las compras y el check-in se mantienen en sus flujos autorizados.</p>
+    @using (Html.BeginForm("Index", "Counter", FormMethod.Get, new { @class = "row g-2 align-items-end mb-4" }))
+    {
+        <div class="col-sm-8 col-md-5">
+            <label for="codigo" class="form-label">Código de reserva</label>
+            <input id="codigo" name="codigo" class="form-control" maxlength="40" value="@Model.CodigoBusqueda" placeholder="Ej.: RV00001" required />
+        </div>
+        <div class="col-auto"><button class="btn btn-primary" type="submit">Consultar</button></div>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.Mensaje))
+    {
+        <div class="alert alert-info" role="alert">@Model.Mensaje</div>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.CodigoReserva))
+    {
+        <section class="card shadow-sm mb-3">
+            <div class="card-body">
+                <h3 class="h5">Reserva @Model.CodigoReserva</h3>
+                <p class="mb-1"><strong>Estado:</strong> @Model.EstadoReserva</p>
+                <p class="mb-0"><strong>Fecha:</strong> @(Model.FechaReserva.HasValue ? Model.FechaReserva.Value.ToString("dd/MM/yyyy HH:mm") : "—")</p>
+            </div>
+        </section>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead><tr><th>Pasajero</th><th>Vuelo</th><th>Fecha</th><th>Asiento</th><th>Estado</th></tr></thead>
+                <tbody>
+                    @foreach (var item in Model.Pasajeros)
+                    {
+                        <tr><td>@item.Nombre</td><td>@item.VueloId</td><td>@item.FechaVuelo.ToString("dd/MM/yyyy")</td><td>@item.Asiento</td><td>@item.Estado</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

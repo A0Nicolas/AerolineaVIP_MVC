@@ -15,7 +15,7 @@
         </div>
         <div style="display: flex; gap: 10px;">
             <a href="@Url.Action("Index", "Admin")" style="background: var(--vip-bg2); color: var(--vip-ink); padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">← Volver al Panel</a>
-            <a href="@Url.Action("Create", "Vuloes")" style="background: var(--vip-red); color: #fff; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">+ Crear Nuevo Vuelo</a>
+            <a href="@Url.Action("Create", "Vueloes")" style="background: var(--vip-red); color: #fff; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px;">+ Crear Nuevo Vuelo</a>
         </div>
     </div>
 
@@ -54,7 +54,10 @@
                                 <div style="display: inline-flex; gap: 6px;">
                                     @Html.ActionLink("Editar", "Edit", new { id = item.VueloId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
                                     @Html.ActionLink("Detalles", "Details", new { id = item.VueloId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    @if (User.IsInRole("SuperUsuario"))
+                                    {
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.VueloId }, new { @style = "background: #ffeeee; color: #d9534f; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    }
                                 </div>
                             </td>
                         </tr>

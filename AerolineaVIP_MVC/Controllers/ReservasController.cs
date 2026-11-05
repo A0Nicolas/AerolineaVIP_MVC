@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -14,7 +14,9 @@ namespace AerolineaVIP_MVC.Controllers
 {
     // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
     // Nico: reservas de UN pasajero para UN vuelo por operación.
-    [Authorize]
+    // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+    // Operaciones propias del cliente; solo SuperUsuario conserva acceso de soporte.
+    [Authorize(Roles = "Cliente,SuperUsuario")]
     public class ReservasController : Controller
     {
         [HttpGet]

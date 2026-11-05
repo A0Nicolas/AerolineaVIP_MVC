@@ -40,7 +40,7 @@ namespace AerolineaVIP_MVC.Controllers
         }
 
         // GET: Aeronaves/Create
-        [Authorize(Roles = "SuperUsuario")]
+        [Authorize(Roles = "SuperUsuario,Administrador")]
         public ActionResult Create()
         {
             ViewBag.EstadoAeronaveCodigo = new SelectList(db.EstadoAeronaves, "Codigo", "Descripcion");
@@ -53,7 +53,7 @@ namespace AerolineaVIP_MVC.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "SuperUsuario")]
+        [Authorize(Roles = "SuperUsuario,Administrador")]
         public ActionResult Create([Bind(Include = "AeronaveId,Matricula,ModeloAeronaveId,EstadoAeronaveCodigo")] Aeronave aeronave)
         {
             if (ModelState.IsValid)

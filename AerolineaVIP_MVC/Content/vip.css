@@ -1,5 +1,4 @@
-/* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
-   Estilos básicos para fase 1. Inspiración de navegación aérea; no copia de Avianca. */
+
 :root { --vip-navy:#142c4e; --vip-blue:#254b7a; --vip-gold:#eecf8d; }
 body { background:#f7f9fc; color:#1b2b3e; min-height:100vh; }
 .vip-nav { background:var(--vip-navy); }

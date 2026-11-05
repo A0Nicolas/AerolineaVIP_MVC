@@ -12,7 +12,9 @@ namespace AerolineaVIP_MVC.Controllers
 {
     // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
     // Check-in académico: reserva confirmada, titular y ventana de 24 a 1 h antes del vuelo.
-    [Authorize]
+    // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+    // Operaciones propias del cliente; solo SuperUsuario conserva acceso de soporte.
+    [Authorize(Roles = "Cliente,SuperUsuario")]
     public class CheckInController : Controller
     {
         [HttpGet]

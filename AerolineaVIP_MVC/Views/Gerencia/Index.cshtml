@@ -1,0 +1,17 @@
+﻿@model AerolineaVIP_MVC.Models.GerenciaResumenViewModel
+@{
+    ViewBag.Title = "Resumen de Gerencia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK. Resumen sin edición ni datos personales. *@
+<div class="container py-4">
+    <h2>Resumen de gerencia</h2>
+    <p class="text-muted">Indicadores generales de solo lectura obtenidos de SQL Server.</p>
+    <div class="row g-3">
+        <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h3 class="h6">Vuelos</h3><strong class="fs-3">@Model.Vuelos</strong></div></div></div>
+        <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h3 class="h6">Aeronaves</h3><strong class="fs-3">@Model.Aeronaves</strong></div></div></div>
+        <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h3 class="h6">Reservas</h3><strong class="fs-3">@Model.Reservas</strong></div></div></div>
+        <div class="col-md-3"><div class="card h-100 shadow-sm"><div class="card-body"><h3 class="h6">Compras</h3><strong class="fs-3">@Model.Compras</strong></div></div></div>
+    </div>
+    <p class="mt-3 small text-muted">Los totales son académicos; no constituyen un reporte financiero ni un módulo comercial independiente.</p>
+</div>

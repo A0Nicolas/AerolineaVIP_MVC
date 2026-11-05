@@ -10,7 +10,7 @@ namespace AerolineaVIP_MVC.Controllers
     // Fase 3, Nico: diagnóstico TEMPORAL de lectura de la base de dominio.
     // Utiliza el contexto creado por Visual Studio desde Model1.edmx (Database First).
     // No reemplaza los CRUD por scaffolding ni forma parte de las 21 pantallas finales.
-    [Authorize]
+    [Authorize(Roles = "SuperUsuario,Administrador")]
     public class DiagnosticoBDController : Controller
     {
         // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.

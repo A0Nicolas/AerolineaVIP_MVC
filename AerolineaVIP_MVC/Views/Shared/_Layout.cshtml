@@ -23,10 +23,19 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("Buscar vuelos", "Index", "Vuelos", null, new { @class = "nav-link" })</li>
+                        @* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK. Menú por funciones autorizadas. *@
                         @if (Request.IsAuthenticated) {
-                            <li class="nav-item">@Html.ActionLink("Mis reservas", "MisReservas", "Reservas", null, new { @class = "nav-link" })</li>
-                            <li class="nav-item">@Html.ActionLink("Check-in", "Index", "CheckIn", null, new { @class = "nav-link" })</li>
-                            <li class="nav-item">@Html.ActionLink("Comprobantes", "Index", "Comprobantes", null, new { @class = "nav-link" })</li>
+                            if (User.IsInRole("Cliente") || User.IsInRole("SuperUsuario")) {
+                                <li class="nav-item">@Html.ActionLink("Mis reservas", "MisReservas", "Reservas", null, new { @class = "nav-link" })</li>
+                                <li class="nav-item">@Html.ActionLink("Check-in", "Index", "CheckIn", null, new { @class = "nav-link" })</li>
+                                <li class="nav-item">@Html.ActionLink("Comprobantes", "Index", "Comprobantes", null, new { @class = "nav-link" })</li>
+                            }
+                            if (User.IsInRole("Counter") || User.IsInRole("Administrador") || User.IsInRole("SuperUsuario")) {
+                                <li class="nav-item">@Html.ActionLink("Counter", "Index", "Counter", null, new { @class = "nav-link" })</li>
+                            }
+                            if (User.IsInRole("Gerente") || User.IsInRole("SuperUsuario")) {
+                                <li class="nav-item">@Html.ActionLink("Gerencia", "Index", "Gerencia", null, new { @class = "nav-link" })</li>
+                            }
                             if (User.IsInRole("SuperUsuario") || User.IsInRole("Administrador")) {
                                 <li class="nav-item">@Html.ActionLink("Administración", "Index", "Admin", null, new { @class = "nav-link" })</li>
                             }
@@ -42,7 +51,7 @@
     </main>
     <footer class="vip-footer py-4 mt-4">
         <div class="container small d-flex flex-wrap justify-content-between gap-2">
-            <span>© @DateTime.Now.Year Aerolínea VIP · Primera entrega académica</span>
+            <span>© @DateTime.Now.Year Aerolínea VIP · MVP académico</span>
             <span>MVC 5 · .NET Framework 4.8.1</span>
         </div>
     </footer>

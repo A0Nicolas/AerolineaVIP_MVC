@@ -265,9 +265,7 @@ body.vip-app {
     }
 }
 
-/* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
-   Estados reales de los asientos. La regla anterior .card !important del tema
-   sobrescribía los estilos en línea, dejando todas las tarjetas grises. */
+
 body.vip-app .card.vip-seat {
     color: #ffffff !important;
     border-width: 1px !important;

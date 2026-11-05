@@ -24,6 +24,10 @@ namespace AerolineaVIP_MVC.Controllers
         public ActionResult Aeronaves() { return RedirectToAction("Index", "Aeronaves"); }
         public ActionResult Reportes() { return View(); }
 
+        // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+        // Matriz de permisos de los perfiles realmente implementados.
+        public ActionResult Roles() { return View(); }
+
         public ActionResult Gestion()
         {
             using (var db = new ApplicationDbContext())
@@ -53,6 +57,10 @@ namespace AerolineaVIP_MVC.Controllers
         {
             if (string.IsNullOrWhiteSpace(id) || !RolesPrincipales.Contains(rol))
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+            // Evita que un SuperUsuario pierda accidentalmente su propio acceso.
+            if (id == User.Identity.GetUserId())
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
             using (var db = new ApplicationDbContext())
             using (var users = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db)))
             {

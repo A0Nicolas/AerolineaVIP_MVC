@@ -48,7 +48,10 @@
                                 <div style="display: inline-flex; gap: 6px;">
                                     @Html.ActionLink("Editar", "Edit", new { id = item.AeronaveId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
                                     @Html.ActionLink("Detalles", "Details", new { id = item.AeronaveId }, new { @style = "background: var(--vip-bg2); color: var(--vip-ink); padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    @if (User.IsInRole("SuperUsuario"))
+                                    {
                                     @Html.ActionLink("Eliminar", "Delete", new { id = item.AeronaveId }, new { @style = "background: #ffeeee; color: #d9534f; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-size: 13px; font-weight: 600;" })
+                                    }
                                 </div>
                             </td>
                         </tr>

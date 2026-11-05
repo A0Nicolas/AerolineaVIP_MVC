@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Roles y permisos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK. Matriz informativa del sistema real. *@
+<div class="container py-4">
+    <h2>Roles y permisos — AeroVIP</h2>
+    <p>Los permisos se comprueban en los controladores con <code>[Authorize(Roles = ...)]</code>. Ocultar un enlace no concede ni revoca permisos.</p>
+    <div class="table-responsive"><table class="table table-bordered table-striped align-middle">
+        <thead><tr><th>Perfil Identity</th><th>Responsabilidad</th><th>Restricción</th></tr></thead>
+        <tbody>
+            <tr><td>SuperUsuario</td><td>Administración, usuarios y roles; soporte del flujo comercial</td><td>Cuenta inicial protegida; no puede cambiar su propio rol</td></tr>
+            <tr><td>Administrador</td><td>Panel, gestión de cuentas no privilegiadas, alta/edición de vuelos y aeronaves</td><td>No cambia roles, no elimina aeronaves ni vuelos</td></tr>
+            <tr><td>Counter</td><td>Consulta autorizada de reservas por código</td><td>No cambia cuentas ni modifica operaciones de terceros</td></tr>
+            <tr><td>Cliente</td><td>Buscar vuelos, reservar, pagar simulado, check-in y comprobantes propios</td><td>Sin acceso a panel ni a datos ajenos</td></tr>
+            <tr><td>Gerente</td><td>Totales operativos de solo lectura</td><td>Sin acceso a CRUD, datos personales o cuentas</td></tr>
+        </tbody>
+    </table></div>
+    <p class="small text-muted">Pasajero es una entidad de viaje y no necesariamente una cuenta de Identity. Los perfiles Operaciones y Comercial del documento original son propuestos, no nuevos roles activos en esta versión.</p>
+    <p><a href="@Url.Action("Index", "Admin")" class="btn btn-outline-secondary">Volver al panel</a></p>
+</div>

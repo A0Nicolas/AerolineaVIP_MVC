@@ -11,7 +11,9 @@ namespace AerolineaVIP_MVC.Controllers
 {
     // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
     // Compra/pago académico de UNA reserva. No utiliza pasarela ni tarjetas reales.
-    [Authorize]
+    // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+    // Operaciones propias del cliente; solo SuperUsuario conserva acceso de soporte.
+    [Authorize(Roles = "Cliente,SuperUsuario")]
     public class ComprasController : Controller
     {
         [HttpGet]

@@ -10,7 +10,9 @@ namespace AerolineaVIP_MVC.Controllers
 {
     // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
     // Comprobantes de la operación académica; cada cliente solo ve los propios.
-    [Authorize]
+    // CÓDIGO PROPIO - NO GENERADO POR EL FRAMEWORK.
+    // Operaciones propias del cliente; solo SuperUsuario conserva acceso de soporte.
+    [Authorize(Roles = "Cliente,SuperUsuario")]
     public class ComprobantesController : Controller
     {
         [HttpGet]
